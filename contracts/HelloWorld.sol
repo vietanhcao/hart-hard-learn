@@ -1,5 +1,6 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.4;
+import "hardhat/console.sol";
 
 
 contract HelloWorld {
@@ -14,6 +15,7 @@ contract HelloWorld {
   }
 
   function updateMessage(string memory _message) public {
+    console.log("_message", _message);
     message = _message;
   }
 
