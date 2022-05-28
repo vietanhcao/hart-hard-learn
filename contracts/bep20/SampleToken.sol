@@ -50,7 +50,7 @@ contract SampleToken is IERC20 {
         require(_allowances[_from][msg.sender] >= _value);
         _balances[_from] -= _value;
         _balances[_to] += _value;
-        // _allowances[_from][msg.sender] -= _value;
+        _allowances[_from][msg.sender] -= _value;
 
         emit Transfer(_from, _to, _value);
 
