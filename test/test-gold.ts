@@ -138,8 +138,11 @@ describe("GOLD", function () {
     });
 
     it("should remove From BlackList correctly", async function () {
-      const transferTx = await token.removeFromBlacklist(accountB.address);
-      await expect(transferTx)
+      const removeTx = await token.removeFromBlacklist(accountB.address);
+      await expect(token.transfer(accountB.address, amount))
+        .to.emit(token, "Transfer")
+        .withArgs(accountA.address, accountB.address, amount);
+      await expect(removeTx)
         .to.emit(token, "BlacklistRemoved")
         .withArgs(accountB.address);
     });
